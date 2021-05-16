@@ -27,7 +27,8 @@ You can make overlay layers by subclassing SlippyLayer. You need to implement a 
 example:
 
 
-'''python
+```python
+
 class PosMarker(SlippyLayer):
     def do_draw(self, gpsmap, dc):
         size = gpsmap.GetSize()
@@ -44,5 +45,4 @@ class PosMarker(SlippyLayer):
         
         dc.SetTextForeground(wx.BLACK)
         dc.DrawText(position, startX - 1, startY - 1)
-
-'''
+```
