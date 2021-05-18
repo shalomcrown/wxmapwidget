@@ -9,7 +9,7 @@ Just use the WxMapWidget like any other widget. You should set the center point.
 
 ```python
 
-from wxmapwidget import WxMapWidget, PosMarker, ScaleMarkLayer
+from com.kirayim.wxmapwidget.wxmapwidget import WxMapWidget, PosMarker, ScaleMarkLayer, DroneSymbol
 
 ....    
     

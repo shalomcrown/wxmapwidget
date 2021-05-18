@@ -6,7 +6,11 @@ Created on Jun 27, 2020
 '''
 
 import math
+import sys
+import os
 
+scriptPath = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, scriptPath)
 
 from projection import Projection
 from tiles import Tiles, LimitedSizeDict
