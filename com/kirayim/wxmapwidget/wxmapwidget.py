@@ -141,8 +141,8 @@ class ScaleMarkLayer(SlippyLayer):
         size = gpsmap.GetSize()
         _w, h = size.GetWidth(), size.GetHeight() 
         
-        lineStart = wx.Point(10.0, h - 20.0)
-        lineEnd = wx.Point(75.0, h - 20.0)
+        lineStart = wx.Point(10, h - 20)
+        lineEnd = wx.Point(75, h - 20)
         
         #------------------------------------------------------
         # Get length of line, and decide where second mark will be
@@ -170,7 +170,7 @@ class ScaleMarkLayer(SlippyLayer):
             text = '%d Km' % int(distMeters / 1000)
         
         markCoords = gpsmap.araz(startCoords, distMeters, -90)
-        mark = wx.Point(*gpsmap.ll2xy(*markCoords))
+        mark = wx.Point(*gpsmap.ll2xyi(*markCoords))
         
         #------------------------------------------------------
         # Draw lines...and text
@@ -220,7 +220,7 @@ class WxMapWidget(wx.Panel, Projection, Tiles):
         
         self.Bind(wx.EVT_MOUSEWHEEL, self.scroll_event)
         size = self.GetSize()
-        self.mousePosition = wx.Point(size.GetWidth() / 2, size.GetHeight() / 2)
+        self.mousePosition = wx.Point(size.GetWidth() // 2, size.GetHeight() // 2)
         
         self.SetBackgroundStyle(wx.BG_STYLE_PAINT)
         
@@ -280,7 +280,7 @@ class WxMapWidget(wx.Panel, Projection, Tiles):
             for y in range(int(math.floor(self.py1)), int(math.ceil(self.py2))):
                 tileFileName = self.getTile(x, y, self.zoom)
                 
-                x1,y1 = self.pxpy2xy(x,y)
+                x1,y1 = self.pxpy2xyi(x,y)
                 
                 if not tileFileName: 
                     dc.DrawRectangle(x1, y1, tilenames.tileSizePixels(), tilenames.tileSizePixels())

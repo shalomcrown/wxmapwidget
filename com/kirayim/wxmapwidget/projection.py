@@ -131,7 +131,14 @@ class Projection:
         x = self.w * (px - self.px1) / self.pdx
         y = self.h * (py - self.py1) / self.pdy
         return(x,y)
-  
+
+    # -----------------------------------------------------------------
+    def pxpy2xyi(self, px, py):
+        """Convert projection units to display units, return integers"""
+        x = self.w * (px - self.px1) / self.pdx
+        y = self.h * (py - self.py1) / self.pdy
+        return (int(x), int(y))
+
     #-----------------------------------------------------------------
     def nudge(self,dx,dy):
         """Move the map by a number of pixels relative to its current position"""
@@ -151,7 +158,15 @@ class Projection:
         x = (px - self.px1) * self.scale
         y = (py - self.py1) * self.scale
         return(x,y)
-  
+
+    # -----------------------------------------------------------------
+    def ll2xyi(self, lat, lon):
+        """Convert geographic units to display units, return integers"""
+        px, py = latlon2xy(lat, lon, self.zoom)
+        x = (px - self.px1) * self.scale
+        y = (py - self.py1) * self.scale
+        return (int(x), int(y))
+
     #-----------------------------------------------------------------
     def xy2ll(self,x,y):
         """Convert display units to geographic units"""
