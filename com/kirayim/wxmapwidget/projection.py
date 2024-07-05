@@ -217,5 +217,3 @@ class Projection:
         dlon = math.atan2( math.sin(angle)* math.sin(dist)* math.cos(oldlat), math.cos(dist) - math.sin(oldlat) * math.sin(lat))
         lon = ((oldlon - dlon + math.pi) % (2 * math.pi)) - math.pi
         return math.degrees(lat), math.degrees(lon)
-        
-    
